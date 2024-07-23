@@ -4,10 +4,12 @@ const PORT = 3000;
 const SignUpRouter = require('./routes/signUp');
 const connectMongo = require('./controller/connection');
 const SignInRouter = require('./routes/signIn');
+const mongoSanitize = require('express-mongo-sanitize');
 
 //Middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use(mongoSanitize());
 
 app.use('/signup', SignUpRouter);
 app.use('/signin', SignInRouter);
