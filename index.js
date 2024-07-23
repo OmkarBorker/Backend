@@ -5,6 +5,8 @@ const SignUpRouter = require('./routes/signUp');
 const connectMongo = require('./controller/connection');
 const SignInRouter = require('./routes/signIn');
 const mongoSanitize = require('express-mongo-sanitize');
+const ChatsRouter = require('./routes/chatsAPI');
+const addPreferenceRouter = require('./routes/addPreference');
 
 //Middlewares
 app.use(express.json());
@@ -13,6 +15,8 @@ app.use(mongoSanitize());
 
 app.use('/signup', SignUpRouter);
 app.use('/signin', SignInRouter);
+app.use('/api', ChatsRouter);
+app.use('/addPreference', addPreferenceRouter);
 
 app.get('/', async (req, res) => {
     return res.send('Ok');

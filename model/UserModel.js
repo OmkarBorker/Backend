@@ -18,6 +18,13 @@ const UserSchema = new mongoose.Schema(
         },
         timestamp: {
             type: Date
+        },
+        profilePicture: {
+            type: String
+        },
+        preferences: [String],
+        comminityIDs: {
+            type: String
         }
     }
 )
