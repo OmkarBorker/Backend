@@ -1,18 +1,31 @@
 const express = require('express');
 const UserModel = require('../model/UserModel');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+const SECRET_KEY = "Git-Gud";
 
 router.post('/', async (req, res) => {
     try {
+        var userID;
+        await jwt.verify(req.body.token, SECRET_KEY, function (err, payload) {
+            if (err) {
+                return res.status(404).json({
+                    status: "failed",
+                    message: e.message
+                })
+            }
+            userID = payload;
+        });
+
         await UserModel.findOneAndUpdate(
-            { _id: req.body.userID }, // Filter
-            { $set: { preferences: req.body.preferences } }, // Update
+            { _id: userID }, // Filter
+            { $push: { preferences: ['Python', 'Sports', 'Football'] } }, // Update
             { new: true } // Options: return the updated document
         );
+        
         return res.status(200).json({
             status: "Success",
-            message: "Preferences added",
-            token: token
+            message: "Preferences added"
         })
     }
     catch (e) {

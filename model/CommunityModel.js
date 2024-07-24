@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // Define the Channel sub-schema
 const channelSchema = new Schema({
-    channelId: { type: Schema.Types.ObjectId, ref: 'Channel' },
+    channelId: { type: Schema.Types.ObjectId},
     channelName: String
 });
 
