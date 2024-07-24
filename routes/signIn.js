@@ -25,13 +25,16 @@ router.post('/', async (req, res) => {
             }
             else {
                 var result = await bcrypt.compare(req.body.password, foundRecord.password);
+                const preferences = foundRecord.preferences;
+                console.log(preferences);
                 if (result) {
                     const originalId = foundRecord._id.toHexString();
                     const token = await jwt.sign(originalId, SECRET_KEY);
                     return res.status(200).json({
                         status: "Success",
                         message: "SignIp Successful",
-                        token: token
+                        token: token,
+                        preferences: preferences
                     })
                 }
                 else {

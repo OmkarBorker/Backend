@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema(
     {
         username: {
-            type: String, 
+            type: String,
             required: true
         },
         email: {
@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema(
             unique: true
         },
         password: {
-            type: String, 
+            type: String,
             required: true
         },
         timestamp: {
@@ -25,13 +25,13 @@ const UserSchema = new mongoose.Schema(
         preferences: {
             type: [String]
         },
-        comminityIDs: 
-        [
-            {
-                type: String,
-                unique: true
-            }
-        ]
+        comminityIDs:
+            [
+                {
+                    type: String,
+                    unique: true
+                }
+            ]
     }
 )
 
