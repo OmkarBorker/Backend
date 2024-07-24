@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const {Schema} = require('mongoose');
+const Community = require('./CommunityModel');
 
 const chatSchema = new mongoose.Schema({
-    senderID: { type: Schema.Types.ObjectId},
-    receiverID: { type: Schema.Types.ObjectId},
+    senderID: String,
+    receiverID: String,
     message: String,
+    communityID: String,
     timestamp: { type: Date, default: Date.now }
 });
 
