@@ -9,10 +9,7 @@ router.post('/', async (req, res) => {
         var userID;
         await jwt.verify(req.body.token, SECRET_KEY, function (err, payload) {
             if (err) {
-                return res.status(404).json({
-                    status: "failed",
-                    message: e.message
-                })
+                throw Error('Token problem');
             }
             userID = payload;
         });
