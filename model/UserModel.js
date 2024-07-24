@@ -22,10 +22,16 @@ const UserSchema = new mongoose.Schema(
         profilePicture: {
             type: String
         },
-        preferences: [String],
-        comminityIDs: {
-            type: String
-        }
+        preferences: {
+            type: [String]
+        },
+        comminityIDs: 
+        [
+            {
+                type: String,
+                unique: true
+            }
+        ]
     }
 )
 

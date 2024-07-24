@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
 
         await UserModel.findOneAndUpdate(
             { _id: userID }, // Filter
-            { $push: { preferences: req.body.preferences } }, // Update
+            { $push: { preferences: { $each: req.body.preferences } } }, // Update
             { new: true } // Options: return the updated document
         );
         
